@@ -33,4 +33,5 @@ $chambre11 = new Chambre (11, 120, 2, "False", "True", $h2);
 
 echo $h1->getInfos();
 echo $h2->getInfos();
+
 ?>
