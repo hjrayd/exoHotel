@@ -5,18 +5,20 @@ class Chambre {
     private float $prix;
     private int $nbLit;
     private bool $wifi;
-    private bool $statut;
+    private bool $dispo;
     private Hotel $hotel;
 
 
-    public function __construct (int $numero, float $prix, int $nbLit, bool $wifi, bool $statut, Hotel $hotel)
+    public function __construct (int $numero, float $prix, int $nbLit, bool $wifi, bool $dispo, Hotel $hotel)
     {
         $this->numero=$numero;
         $this->prix=$prix;
         $this->nbLit=$nbLit;
         $this->wifi=$wifi;
-        $this->statut=$statut;
+        $this->dispo=$dispo;
         $this->hotel=$hotel; 
+        $hotel->addChambre($this);
+       
 }
 
 
@@ -71,14 +73,14 @@ class Chambre {
     }
 
    
-    public function getStatut(): bool
+    public function getDispo(): bool
     {
-        return $this->statut;
+        return $this->dispo;
     }
 
-    public function setStatut($statut)
+    public function setDispo($dispo)
     {
-        $this->statut = $statut;
+        $this->dispo = $dispo;
 
         return $this;
     }
@@ -96,8 +98,6 @@ class Chambre {
         return $this;
     }
 
-
-    
 }
 
 ?>

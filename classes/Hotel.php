@@ -3,19 +3,16 @@
 class Hotel {
     private string $nom; 
     private string $adresse;
-    private int $nbChambre = 30;
-    private int $chambreReservee;
-    private int $chambreDispo;
-   
-    
+    private int $nbChambre;
+    private array $chambres;
 
-    public function __construct(string $nom, string $adresse, int $nbChambre, int $chambreReservee, int $chambreDispo)
+
+    public function __construct(string $nom, string $adresse, int $nbChambre)
     {
         $this->nom=$nom;
         $this->adresse = $adresse;
         $this->nbChambre = $nbChambre;
-        $this->chambreReservee=$chambreReservee; 
-        $this->chambreDispo=$chambreDispo;
+        $this->chambres = [];
     }
 
     public function getNom(): string
@@ -55,52 +52,50 @@ class Hotel {
 
         return $this;
     } 
-    public function getChambreDispo(): int
+
+      public function getChambres()
     {
-        return $this->chambreDispo;
+        return $this->chambres;
+    }
+
+    public function setChambres($chambres)
+    {
+        $this->chambres = $chambres;
+
+        return $this;
     }
 
   
-    public function setChambreDispo($chambreDispo)
-    {
-        $this->chambreDispo = $chambreDispo;
-
-        return $this;
-    }
-
-    public function getChambreReservee(): int
-    {
-        return $this->chambreReservee;
-    }
-
-
-    public function setChambreReservee($chambreReservee)
-    {
-        $this->chambreReservee = $chambreReservee;
-
-        return $this;
-    }
-    
-
-    public function reserver($chambreReservee) {
+    /*public function reserver($chambreReservee) {
         $this->nbChambre -= $chambreReservee;
     }
 
     public function dispo($chambreDispo) {
         $this->nbChambre = $this->nbChambre -= $chambreReservee;
+    }*/
+
+    public function addChambre(Chambre $chambre) {
+        $this->chambres[] = $chambre;
     }
 
-
-
+    public function afficherChambres()
+    {
+        foreach ($this->chambres as $chambre) {
+            echo $chambre . '<br>';
+        }
+    }
+    
+    
     public function getInfos() {
         $result = $this->nom . "<br>" .
         $this->adresse. "<br>
         Nombres de chambres : " . $this->nbChambre . "<br>
-        Nombres de chambre réservées :" . $this->chambreReservee . "<br>
+        Nombres de chambre réservées : <br>
         Nombres de chambres dispo:" ;
         return $result;
     }
 
+  
  }
     
 
