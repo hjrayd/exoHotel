@@ -65,15 +65,6 @@ class Hotel {
         return $this;
     }
 
-  
-    /*public function reserver($chambreReservee) {
-        $this->nbChambre -= $chambreReservee;
-    }
-
-    public function dispo($chambreDispo) {
-        $this->nbChambre = $this->nbChambre -= $chambreReservee;
-    }*/
-
     public function addChambre(Chambre $chambre) {
         $this->chambres[] = $chambre;
     }
@@ -85,17 +76,20 @@ class Hotel {
         }
     }
     
-    
+    public function nbChambreReservee()
+    {
+        return count($this->reservation);
+    }
+
     public function getInfos() {
         $result = $this->nom . "<br>" .
         $this->adresse. "<br>
         Nombres de chambres : " . $this->nbChambre . "<br>
         Nombres de chambre réservées : <br>
-        Nombres de chambres dispo:" ;
+        Nombres de chambres dispo: <br>" ;
         return $result;
     }
 
-  
  }
     
 
