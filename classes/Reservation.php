@@ -1,18 +1,23 @@
 <?php
 
 class Reservation  {
-    private dateTime $dateDebut; 
-    private dateTime $dateFin; 
+    private DateTime $dateDebut; 
+    private DateTime $dateFin; 
     private Chambre $chambre; 
     private Reservataire $reservataire; 
+    private Hotel $hotel;
 
     //construct
     public function __construct(string $dateDebut, string $dateFin, Chambre $chambre, Reservataire $reservataire)
     {
-        $this->dateDebut=$dateDebut;
-        $this->dateFin=$dateFin;
+        $this->dateDebut= new DateTime($dateDebut);
+        $this->dateFin=new DateTime ($dateFin);
         $this->chambre=$chambre; 
         $this->reservataire=$reservataire;
+        $chambre->addReservation($this);
+        $hotel = $chambre->getHotel();
+        $hotel->addReservation($this);
+        $reservataire->addReservation($this);
     }
 
     //getters et setters
@@ -64,11 +69,11 @@ class Reservation  {
         return $this;
     }
 
-
     public function __toString()
     {
-        return $this->getReservataire() . " - " . $this->getChambre() . " - " . " du " . $this->dateDebut->format('d.m.y') . " au " . $this->dateFin->format('d.m.y');
+        return $this->getReservataire() . " - " . $this->getChambre() . " - " . " du " . $this->dateDebut->format('d.m.y') . " au " . $this->dateFin->format('d.m.y') ."<br>";
     }
+
 
 }
 

@@ -34,14 +34,16 @@ $reservataire1 = new Reservataire ("MURMANN", "Micka");
 $reservataire2 = new Reservataire ("GIBELLO", "Virgile");
 
 
-$reservation = new Reservation($reservataire2, $chambre6, "01-01-2021", "01-01-2021");
-$reservation2 = new Reservation($reservataire1, $chambre3, "11-03-2021", "11-03-2021");
-$reservation3 = new Reservation($reservataire1, $chambre4, "01-04-2021", "01-04-2021");
-
-
+$reservation = new Reservation("01-01-2021", "01-01-2021", $chambre6, $reservataire2);
+$reservation2 = new Reservation("11-03-2021", "11-03-2021", $chambre3, $reservataire1);
+$reservation3 = new Reservation("01-04-2021","01-04-2021", $chambre4, $reservataire1 );
 
 
 echo $h1->getInfos();
-echo $h2->getInfos();
+
+echo $h1->afficherReservation();
+echo $h2->afficherReservation();
+
+echo $reservataire1->clientReservations();
 
 ?>

@@ -7,6 +7,7 @@ class Reservataire {
 
 
     //Construct
+
     public function __construct(string $nom, string $prenom)
     {
         $this->nom=$nom;
@@ -15,6 +16,7 @@ class Reservataire {
     }
   
     //getters et setters
+
     public function getNom(): string
     {
         return $this->nom;
@@ -53,7 +55,6 @@ class Reservataire {
 
     //Methodes
 
-
     public function addReservation(Reservation $reservation)
     {
         $this->reservations[] = $reservation;
@@ -62,19 +63,27 @@ class Reservataire {
     public function calcReservation()
     {
         $nbReservation = 0;
-        foreach ($this->reservation as $reservation) {
+        foreach ($this->reservations as $reservation) {
             $nbReservation += $reservation;
         }
         return $nbReservation;
     }
 
-    public function calcFacture() {
-
+    public function clientReservations() {
+        
+     $result = "<h2> Réservations de ". $this."</h2>";
+     $result .= count($this->reservations) ." reservations <br>";
+     foreach ($this->reservations as $reservation)
+    {$result .= $reservation;}
+     return $result;
     }
+
+    //public function calcFacture() {}
 
     public function __toString() 
     {
         return $this->getPrenom() ." ". $this->getNom();
+     
     }
 }
 

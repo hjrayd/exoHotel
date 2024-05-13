@@ -6,8 +6,6 @@ class Hotel {
     private array $chambres;
     private array $reservations; 
 
-
-
     //Construct
     public function __construct(string $nom, string $adresse)
     {
@@ -45,10 +43,11 @@ class Hotel {
         return $this;
     }
 
-      public function getChambres(): int
+   public function getChambres()
     {
         return $this->chambres;
     }
+
 
     public function setChambres($chambres)
     {
@@ -57,10 +56,12 @@ class Hotel {
         return $this;
     }
 
-    public function getReservations(): int
+
+    public function getReservations()
     {
         return $this->reservations;
     }
+
 
     public function setReservations($reservations)
     {
@@ -76,40 +77,32 @@ class Hotel {
 
     public function addReservation(Reservation $reservation)
     {
-        $this->_reservations[] = $reservation;
+        $this->reservations[] = $reservation;
     }
 
     public function nbChambreReservee()
     {
-        return count($this->reservation);
+        return count($this->reservations);
     }
 
     public function nbChambre()
     {
-        return count($this->chambre);
+        return count($this->chambres);
     }
     
-    public function afficherReservation()
-    {
-        echo "Réservations de l'hôtel :" . $this->getNom() . " **** " . $this->getVille(). "<br>";
-        if ($this->reservation) {
-            echo count($this->reservation) . "RÉSERVATIONS" ;
-            foreach ($this->reservations as $reservation) {
-                echo $reservation ;
-            }
+    public function afficherReservation() {
+        if(count($this->reservations) > 0) {
+        $result = "<h2> Reservations de l'hôtel ". $this->getNom(). "</h2>";
+        foreach ($this->reservations as $reservation) 
+        $result .= $reservation; 
         } else {
-            echo "Aucune réservation !";
+        $result = "<h2> Reservations de l'hôtel ". $this->getNom(). "</h2> Aucune réservation !";
         }
-    }
-
-    public function calcChambreDispo()
-    {   $nbChambreReservee = intval($nbChambreReservee());
-        $nbChambre = intval($getNbChambre());
-        $nbChambreDispo= $nbChambreReservee - $nbChambre;
-        return $nbChambreDispo;
-    }
+        return $result;
+}
     
     //GetInfos
+
     public function getInfos() {
         $result = $this->nom . "<br>" .
         $this->adresse. "<br>
@@ -118,7 +111,6 @@ class Hotel {
         Nombres de chambres dispo: <br>" ;
         return $result;
     }
-
  }
     
 

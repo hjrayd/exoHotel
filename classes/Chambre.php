@@ -19,7 +19,7 @@ class Chambre {
         $this->dispo=$dispo;
         $this->hotel=$hotel; 
         $this->hotel->addChambre($this);
-        $this->reservation = [];
+        $this->reservations = [];
        
 }
     //getters et setters
@@ -98,8 +98,22 @@ class Chambre {
         return $this;
     }
 
+  public function getReservations()
+    {
+        return $this->reservations;
+    }
 
+    public function setReservations($reservations)
+    {
+        $this->reservations = $reservations;
+
+        return $this;
+    }
     //methodes
+
+    public function addReservation(Reservation $reservation) {
+        $this->reservations[] = $reservation;
+    }
 
     public function optionWifi()
     {
@@ -111,9 +125,10 @@ class Chambre {
     }
     
     public function __toString() {
-        return $this->getNumero() ."(". $this->getNbLit() . "lits - Wifi: " .$this->getWifi(). ")";;
+        return "Chambre ". $this->getNumero(); 
     }
-    
+
+  
 }
 
 ?>
