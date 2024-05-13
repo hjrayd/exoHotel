@@ -8,7 +8,7 @@ class Chambre {
     private bool $dispo;
     private Hotel $hotel;
 
-
+    //construct
     public function __construct (int $numero, float $prix, int $nbLit, bool $wifi, bool $dispo, Hotel $hotel)
     {
         $this->numero=$numero;
@@ -17,11 +17,10 @@ class Chambre {
         $this->wifi=$wifi;
         $this->dispo=$dispo;
         $this->hotel=$hotel; 
-        $hotel->addChambre($this);
+        $this->hotel->addChambre($this);
        
 }
-
-
+    //getters et setters
     public function getNumero(): int
     {
         return $this->numero;
