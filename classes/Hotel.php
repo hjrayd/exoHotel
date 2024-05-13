@@ -76,7 +76,7 @@ class Hotel {
 
     public function addReservation(Reservation $reservation)
     {
-        $this->_reservations[] = $reservations;
+        $this->_reservations[] = $reservation;
     }
 
     public function nbChambreReservee()
@@ -88,13 +88,32 @@ class Hotel {
     {
         return count($this->chambre);
     }
+    
+    public function afficherReservation()
+    {
+        echo "Réservations de l'hôtel :" . $this->getNom() . " **** " . $this->getVille() "<br>";
+        if ($this->reservation) {
+            echo count($this->reservation) . "RÉSERVATIONS" ;
+            foreach ($this->reservations as $reservation) {
+                echo $reservation ;
+            }
+        } else {
+            echo "Aucune réservation !";
+        }
+    }
 
+    public function calcChambreDispo()
+    {   $nbChambreReservee = intval($nbChambreReservee());
+        $nbChambre = intval($getNbChambre());
+        $nbChambreDispo= $nbChambreReservee - $nbChambre;
+        return $nbChambreDispo;
+    }
     
     //GetInfos
     public function getInfos() {
         $result = $this->nom . "<br>" .
         $this->adresse. "<br>
-        Nombres de chambres: <br>
+        Nombre de chambre: <br>
         Nombres de chambre réservées : <br>
         Nombres de chambres dispo: <br>" ;
         return $result;

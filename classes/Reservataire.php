@@ -52,8 +52,29 @@ class Reservataire {
     }
 
     //Methodes
+
+
+    public function addReservation(Reservation $reservation)
+    {
+        $this->reservations[] = $reservation;
+    }
+
+    public function calcReservation()
+    {
+        $nbReservation = 0;
+        foreach ($this->reservation as $reservation) {
+            $nbReservation += $reservation;
+        }
+        return $nbReservation;
+    }
+
     public function calcFacture() {
 
+    }
+
+    public function __toString() 
+    {
+        return $this->getPrenom() ." ". $this->getNom();
     }
 }
 

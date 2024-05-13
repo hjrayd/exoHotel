@@ -30,6 +30,17 @@ $chambre9 = new Chambre (9, 120, 2, "False", "True", $h2);
 $chambre10 = new Chambre (10, 120, 2, "False", "True", $h2);
 $chambre11 = new Chambre (11, 120, 2, "False", "True", $h2);
 
+$reservataire1 = new Reservataire ("MURMANN", "Micka");
+$reservataire2 = new Reservataire ("GIBELLO", "Virgile");
+
+
+$reservation = new Reservation($reservataire2, $chambre6, "01-01-2021", "01-01-2021");
+$reservation2 = new Reservation($reservataire1, $chambre3, "11-03-2021", "15-03-2021");
+$reservation3 = new Reservation($reservataire1, $chambre4, "01-04-2021", "17-04-2021");
+
+
+
+
 echo $h1->getInfos();
 echo $h2->getInfos();
 

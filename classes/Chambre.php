@@ -7,6 +7,7 @@ class Chambre {
     private bool $wifi;
     private bool $dispo;
     private Hotel $hotel;
+    private array $reservations;
 
     //construct
     public function __construct (int $numero, float $prix, int $nbLit, bool $wifi, bool $dispo, Hotel $hotel)
@@ -18,6 +19,7 @@ class Chambre {
         $this->dispo=$dispo;
         $this->hotel=$hotel; 
         $this->hotel->addChambre($this);
+        $this->reservation = [];
        
 }
     //getters et setters
@@ -84,7 +86,6 @@ class Chambre {
         return $this;
     }
 
-  
     public function getHotel(): Hotel 
     {
         return $this->hotel;
@@ -97,6 +98,22 @@ class Chambre {
         return $this;
     }
 
+
+    //methodes
+
+    public function optionWifi()
+    {
+        if ($this->getWifi() == true) {
+            return "oui";
+        } else {
+            return "non";
+        }
+    }
+    
+    public function __toString() {
+        return $this->getNumero. "(". $this->getNbLit . "lits - Wifi: " .$this->getOptionWifi. ")";
+    }
+    
 }
 
 ?>

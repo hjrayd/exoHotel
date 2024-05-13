@@ -1,27 +1,41 @@
 <?php
 
 class Reservation  {
-    private dateTime $dateReservation; 
+    private dateTime $dateDebut; 
+    private dateTime $dateFin; 
     private Chambre $chambre; 
     private Reservataire $reservataire; 
 
     //construct
-    public function __construct(string $dateReservation, Chambre $chambre, Reservataire $reservataire)
+    public function __construct(string $dateDebut, string $dateFin, Chambre $chambre, Reservataire $reservataire)
     {
-        $this->dateReservation=$dateReservation;
+        $this->dateDebut=$dateDebut;
+        $this->dateFin=$dateFin;
         $this->chambre=$chambre; 
         $this->reservataire=$reservataire;
     }
 
     //getters et setters
-   public function getDateReservation(): dateTime
+   public function getDateDebut(): dateTime
     {
-        return $this->dateReservation;
+        return $this->dateDebut;
     }
 
-    public function setDateReservation($dateReservation)
+    public function setDateDebut($dateDebut)
     {
-        $this->dateReservation = $dateReservation;
+        $this->dateDebut = $dateDebut;
+
+        return $this;
+    }
+
+    public function getDateFin(): dateTime
+    {
+        return $this->dateFin;
+    }
+
+    public function setDateFin($dateFin)
+    {
+        $this->dateFin = $dateFin;
 
         return $this;
     }
@@ -48,6 +62,12 @@ class Reservation  {
         $this->reservataire = $reservataire;
 
         return $this;
+    }
+
+
+    public function __toString()
+    {
+        return $this->getReservataire() . " - " . $this->getChambre() . " - " . " du " . $this->dateDebut->format('d.m.y') . " au " . $this->dateFin->format('d.m.y');
     }
 
 }
