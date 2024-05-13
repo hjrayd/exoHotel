@@ -35,8 +35,8 @@ $reservataire2 = new Reservataire ("GIBELLO", "Virgile");
 
 
 $reservation = new Reservation($reservataire2, $chambre6, "01-01-2021", "01-01-2021");
-$reservation2 = new Reservation($reservataire1, $chambre3, "11-03-2021", "15-03-2021");
-$reservation3 = new Reservation($reservataire1, $chambre4, "01-04-2021", "17-04-2021");
+$reservation2 = new Reservation($reservataire1, $chambre3, "11-03-2021", "11-03-2021");
+$reservation3 = new Reservation($reservataire1, $chambre4, "01-04-2021", "01-04-2021");
 
 
 

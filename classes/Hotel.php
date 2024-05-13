@@ -91,7 +91,7 @@ class Hotel {
     
     public function afficherReservation()
     {
-        echo "Réservations de l'hôtel :" . $this->getNom() . " **** " . $this->getVille() "<br>";
+        echo "Réservations de l'hôtel :" . $this->getNom() . " **** " . $this->getVille(). "<br>";
         if ($this->reservation) {
             echo count($this->reservation) . "RÉSERVATIONS" ;
             foreach ($this->reservations as $reservation) {

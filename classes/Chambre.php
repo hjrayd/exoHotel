@@ -111,7 +111,7 @@ class Chambre {
     }
     
     public function __toString() {
-        return $this->getNumero. "(". $this->getNbLit . "lits - Wifi: " .$this->getOptionWifi. ")";
+        return $this->getNumero() ."(". $this->getNbLit() . "lits - Wifi: " .$this->getWifi(). ")";;
     }
     
 }
