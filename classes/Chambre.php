@@ -117,10 +117,19 @@ class Chambre {
 
     public function optionWifi()
     {
-        if ($this->getWifi() == true) {
+    
+        if ($this->getWifi() == True) {
             return "oui";
         } else {
             return "non";
+        }
+    }
+
+    public function dispoChambre() {
+        if ($this->getDispo() == True) {
+            return "DISPONIBLE";
+        } else {
+            return "RESERVEE";
         }
     }
     
@@ -128,7 +137,6 @@ class Chambre {
         return "Chambre ". $this->getNumero(); 
     }
 
-  
 }
 
 ?>

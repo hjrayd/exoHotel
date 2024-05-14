@@ -64,17 +64,26 @@ class Reservataire {
     {
         $nbReservation = 0;
         foreach ($this->reservations as $reservation) {
-            $nbReservation += $reservation;
-        }
+            $nbReservation += $reservation;}
         return $nbReservation;
     }
 
+    public function calcFacture() {  
+        $result=0;
+        foreach ($this->reservations as $reservation) {
+            $result += $reservation->getChambre()->getPrix() * $reservation->getNbJours();
+        }
+        return $result;
+    }
+
+    
     public function clientReservations() {
         
      $result = "<h2> Réservations de ". $this."</h2>";
      $result .= count($this->reservations) ." reservations <br>";
      foreach ($this->reservations as $reservation)
-    {$result .= $reservation;}
+    {$result .= "<strong> Hotel : ". $reservation->getChambre()->getHotel()->getNom(). "</strong> / Chambre :". $reservation->getChambre()->getNumero(). " ( " . $reservation->getChambre()->getNbLit(). " - ". $reservation->getChambre()->getPrix() . " € - Wifi : " . $reservation->getChambre()->optionWifi(). ") du ". $reservation->getDateDebut()->format('d.m.y'). " au " .$reservation->getDateFin()->format('d.m.y')."<br>";}
+    $result .=  "Total: " .$this->calcFacture(). "€";
      return $result;
     }
 

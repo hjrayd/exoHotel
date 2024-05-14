@@ -21,7 +21,7 @@ class Reservation  {
     }
 
     //getters et setters
-   public function getDateDebut(): dateTime
+   public function getDateDebut(): DateTime
     {
         return $this->dateDebut;
     }
@@ -33,7 +33,7 @@ class Reservation  {
         return $this;
     }
 
-    public function getDateFin(): dateTime
+    public function getDateFin(): DateTime
     {
         return $this->dateFin;
     }
@@ -69,12 +69,17 @@ class Reservation  {
         return $this;
     }
 
+    public function getNbJours() : int {
+        $result = $this->dateDebut->diff($this->dateFin)->format("%a");
+        return $result;
+     }
+
     public function __toString()
     {
         return $this->getReservataire() . " - " . $this->getChambre() . " - " . " du " . $this->dateDebut->format('d.m.y') . " au " . $this->dateFin->format('d.m.y') ."<br>";
     }
 
-
+   
 }
 
 ?>

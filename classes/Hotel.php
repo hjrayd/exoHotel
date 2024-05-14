@@ -15,13 +15,11 @@ class Hotel {
         $this->reservations = [];
     }
 
-
     //Getters et Setters
     public function getNom(): string
     {
         return $this->nom;
     }
-
   
     public function setNom($nom)
     {
@@ -56,7 +54,6 @@ class Hotel {
         return $this;
     }
 
-
     public function getReservations()
     {
         return $this->reservations;
@@ -86,29 +83,43 @@ class Hotel {
     }
 
     public function nbChambre()
-    {
-        return count($this->chambres);
+    { return count($this->chambres);
+     }
+
+    public function nbChambreDispo() {
+         return count($this->chambres)-count($this->reservations);
     }
-    
+
+    public function statutChambres() {
+        $result = "<br> <h2> Statut des chambres de ". $this->getNom() ."</h2> <br>";
+        foreach($this->chambres as $chambre)
+        {
+            $result .= "Chambre " .$chambre->getNumero(). " " .$chambre->getPrix(). " € " .$chambre->optionWifi(). " " .$chambre->dispoChambre(). "<br>";
+        }
+        return $result;
+    }
+
     public function afficherReservation() {
         if(count($this->reservations) > 0) {
+            
         $result = "<h2> Reservations de l'hôtel ". $this->getNom(). "</h2>";
+        $result .= count($this->reservations) ." reservations <br>";
         foreach ($this->reservations as $reservation) 
         $result .= $reservation; 
         } else {
         $result = "<h2> Reservations de l'hôtel ". $this->getNom(). "</h2> Aucune réservation !";
         }
         return $result;
-}
+    }
     
     //GetInfos
 
     public function getInfos() {
         $result = $this->nom . "<br>" .
         $this->adresse. "<br>
-        Nombre de chambre: <br>
-        Nombres de chambre réservées : <br>
-        Nombres de chambres dispo: <br>" ;
+        Nombre de chambre:". $this->nbChambre() ."<br>
+        Nombres de chambre réservées :" .$this->nbChambreReservee(). "<br>
+        Nombres de chambres dispo:" .$this->nbChambreDispo(). "<br>" ;
         return $result;
     }
  }
